@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/table.js') }}"></script>
+        <script type="text/javascript" charset="utf-8">
+        
+            var socket;
+            $(document).ready(function(){
+                socket = io.connect('http://' + document.domain + ':' + location.port + '/chat');
+                socket.on('connect', function() {
+                    socket.emit('joined', {});
+                });
+                socket.on('status', function(data) {
+                    $('#chat').val($('#chat').val() + '<' + data.msg + '>\n');
+                    $('#chat').scrollTop($('#chat')[0].scrollHeight);
+                });
+                socket.on('message', function(data) {
+                    $('#chat').val($('#chat').val() + data.msg + '\n');
+                    $('#chat').scrollTop($('#chat')[0].scrollHeight);
+                });
+                var client;
+                socket.on('my_response', function(data) {
+                    console.log(data.name)
+                    client=data.name;
+                    });
+                $('#text').keypress(function(e) {  
+                    socket.emit('sajatevent')
+                    
+                    //if (client=="zsolti") {
+                        var code = e.keyCode || e.which;
+                        if (code == 13) {
+                            text = $('#text').val();
+                            $('#text').val('');
+                            socket.emit('text', {msg: text});
+                        }
+                    //}
+                });
+            });
+            function leave_room() {
+                socket.emit('left', {}, function() {
+                    socket.disconnect();
+                    window.location.href = "{{ url_for('main.index') }}";
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <body>
+    <div id=wrapper>
+        <div id=second>
+            <h1>Secret PreDynt chat</h1>
+            <textarea id="chat" cols=96% rows=24% disabled></textarea><br><br>
+            <input id="text" size=96% placeholder="Írj ide valamit."><br><br>
+            <a href="#" onclick="leave_room();">Kilépés</a>
+        </div>
+        <div id=first>
+            <h1>CardGame</h1>
+            <script>tableCreate()</script>
+        </div>
+        </div>
+    </body>
+    </body>
+</html>
