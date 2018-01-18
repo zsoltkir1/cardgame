@@ -4,6 +4,7 @@
         <script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/table.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/cardOperations.js') }}"></script>
         <script type="text/javascript" charset="utf-8">
         
             var socket;
@@ -26,40 +27,100 @@
                     client=data.name;
                     });
                 $('#text').keypress(function(e) {  
-                    socket.emit('sajatevent')
+                    socket.emit('chatMessage')
                     
                     //if (client=="zsolti") {
+
                         var code = e.keyCode || e.which;
                         if (code == 13) {
                             text = $('#text').val();
                             $('#text').val('');
                             socket.emit('text', {msg: text});
                         }
+
                     //}
                 });
+                    socket.emit('requestInitHand');
+                    socket.on('recieveInitHand',function(data){
+                    console.log('lefut amugy');
+                    setCardParameter('intd112',data.card1top);
+                    setCardParameter('intd132',data.card1bot);
+                    setCardParameter('intd121',data.card1left);
+                    setCardParameter('intd123',data.card1right);
+                    setCardParameter('intd122',data.card1name);
+                    setCardParameter('intd212',data.card2top);
+                    setCardParameter('intd232',data.card2bot);
+                    setCardParameter('intd221',data.card2left);
+                    setCardParameter('intd223',data.card2right);
+                    setCardParameter('intd222',data.card2name);
+                    setCardParameter('intd312',data.card3top);
+                    setCardParameter('intd332',data.card3bot);
+                    setCardParameter('intd321',data.card3left);
+                    setCardParameter('intd323',data.card3right);
+                    setCardParameter('intd322',data.card3name);
+                    setCardParameter('intd412',data.card4top);
+                    setCardParameter('intd432',data.card4bot);
+                    setCardParameter('intd421',data.card4left);
+                    setCardParameter('intd423',data.card4right);
+                    setCardParameter('intd422',data.card4name);
+
+                });
+                    socket.on('changeColor2',function(data){
+                    color=data.color;
+                    console.log(color);
+                    document.body.style.backgroundColor = color});
+                
+                    socket.on('choosenCard',function(data){
+                    console.log(data.card1top);
+                    console.log(data.card1bot);
+                    console.log(data.card1left);
+                    console.log(data.card1right);
+                    console.log(data.card1name);
+                    console.log(data.color);
+                    console.log(data.tableID);
+                    resetHandColor();
+                    document.getElementById(data.tableID).bgColor = data.color});
+                    
+
             });
+            
             function leave_room() {
                 socket.emit('left', {}, function() {
                     socket.disconnect();
                     window.location.href = "{{ url_for('main.index') }}";
                 });
-            }
+            };
+            function asd(i) {
+            console.log(i)
+            socket.emit('changeColor',{i})         
+            };
+            function chooseCard(i) {
+            console.log(i)
+            socket.emit('chooseCard',{i})        
+            };
+
+
+
         </script>
     </head>
     <body>
-        <body>
     <div id=wrapper>
         <div id=second>
-            <h1>Secret PreDynt chat</h1>
-            <textarea id="chat" cols=96% rows=24% disabled></textarea><br><br>
-            <input id="text" size=96% placeholder="Írj ide valamit."><br><br>
-            <a href="#" onclick="leave_room();">Kilépés</a>
+            <div id=chatDiv>
+                <h1>Live Chat</h1>
+                <textarea id="chat" cols=96% rows=24% disabled></textarea><br><br>
+                <input id="text" size=96% placeholder="Írj ide valamit."><br><br>
+                <a href="#" onclick="leave_room();">Kilépés</a>
+            </div>
+            <div id=availableCards>
+                Cards will show up here!
+            </div>
         </div>
         <div id=first>
             <h1>CardGame</h1>
-            <script>tableCreate()</script>
         </div>
         </div>
-    </body>
+    <script>tableCreate()</script>
+    <script>tableCreateForAvailableCards()</script>
     </body>
 </html>

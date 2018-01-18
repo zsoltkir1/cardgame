@@ -2,12 +2,59 @@
     width: 100%;
     overflow: hidden; /* add this to contain floated children */
 }
+
 #first {
-    width: 50%;
+    width: 40%;
     float:left; /* add this */
 }
+
 #second {
-    width: 50%;
+    width: 60%;
     text-align: center;
     float: right; /* add this */
+}
+
+#availableCards {
+    float: right;
+}
+
+.classintd12 {
+    text-align: center;
+    vertical-align: top;
+}
+
+.classintd21 {
+    text-align: left;
+    vertical-align: center;
+}
+
+.classintd23 {
+    text-align: right;
+    vertical-align: center;
+}
+
+.classintd32 {
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.classintd22 {
+    text-align: center;
+    vertical-align: center;
+}
+
+.classintd11 {
+    visibility: hidden;
+}
+
+.classintd13 {
+    visibility: hidden;
+}
+
+.classintd31 {
+    visibility: hidden;
+}
+
+.classintd33 {
+    visibility: hidden;
 }

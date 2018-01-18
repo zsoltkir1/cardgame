@@ -1,6 +1,6 @@
 class Card():
     
-    def __init__(self,name,top,bot,left,right):
+    def __init__(self,top,bot,left,right,name):
         self.name=name
         self.top=top
         self.bot=bot
