@@ -93,12 +93,12 @@ def chooseCard(i):
             actualCard[room] = Card(hands[player][i['i']].top,hands[player][i['i']].bot,hands[player][i['i']].left,hands[player][i['i']].right,hands[player][i['i']].name),i['i']
             color="red"
             emit('choosenCard',{'tableID':tableID,'color':color,'card1top':actualCard[room][0].top,'card1bot':actualCard[room][0].bot,'card1left':actualCard[room][0].left,'card1right':actualCard[room][0].right,'card1name':actualCard[room][0].name},player=session.get('player'))
-            #turns[session.get('room')]="blue"
+            #turns[session.get('room')]="green"
             phases[room]='put'
-        elif player == clientsInRoom[room][1]-1 and turns[session.get('room')]=='blue':
+        elif player == clientsInRoom[room][1]-1 and turns[session.get('room')]=='green':
             tableID = 'tabl' + str(i['i']+1)
             actualCard[room] = Card(hands[player][i['i']].top,hands[player][i['i']].bot,hands[player][i['i']].left,hands[player][i['i']].right,hands[player][i['i']].name),i['i']
-            color="blue"
+            color="green"
             emit('choosenCard',{'tableID':tableID,'color':color,'card1top':actualCard[room][0].top,'card1bot':actualCard[room][0].bot,'card1left':actualCard[room][0].left,'card1right':actualCard[room][0].right,'card1name':actualCard[room][0].name},player=session.get('player'))
             #turns[session.get('room')]="red"
             phases[room]='put'
@@ -169,24 +169,24 @@ def putCard(i,j):
             
             db[room]+=1
             phases[room]='select'
-            if turns[room]=='blue':
+            if turns[room]=='green':
                 turns[room]='red'
             else:
-                turns[room]='blue'
+                turns[room]='green'
                 
             if db[room]>24:
                 red=0
-                blue=0
+                green=0
                 for k in range(5):
                     for l in range(5):
                         if boards[room,k,l][1]=='red':
                             red+=1
-                        elif boards[room,k,l][1]=='blue':
-                            blue+=1
-                if red>blue:
+                        elif boards[room,k,l][1]=='green':
+                            green+=1
+                if red>green:
                     emit('message', {'msg': 'Red player won the game Congratulate, please leave the room.'}, room=room)
                 else:
-                    emit('message', {'msg': 'Blue player won the game Congratulate, please leave the room.'}, room=room)
+                    emit('message', {'msg': 'green player won the game Congratulate, please leave the room.'}, room=room)
         else:
             pass
     else:
@@ -199,7 +199,7 @@ def changeColor(i):
     if i['i']==1:
         color="red"
     elif i['i']==2:
-        color="blue"
+        color="green"
     elif i['i']==0:
         color="pink"
     else:
