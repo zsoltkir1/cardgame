@@ -16,8 +16,9 @@ function tableCreate() {
                 var tabl = document.createElement('table');
                 tabl.id = 'tabl' + (i+1) + (j+1);
                 let x = i;
+                let y = j;
                 tabl.onclick = function() {
-                    asd(x);
+                    putCard(x,y);
                 }
                 tabl.style.width = '100px';
                 tabl.style.height = '100px';
@@ -31,14 +32,14 @@ function tableCreate() {
                             var intd = intr.insertCell();
                             intd.appendChild(document.createTextNode('a'));
                             //intd.style.border = '1px solid black';
-                            intd.id = 'intd' + (i + 1) + (j + 1);
+                            intd.id = 'intd' + (i + 1) + (j + 1) + (k + 1) + (l + 1);
                             intd.className += 'classintd' + (k + 1) + (l + 1);
                             break;
                         } else {
                             var intd = intr.insertCell();
                             intd.appendChild(document.createTextNode('a'));
                             //intd.style.border = '1px solid black';
-                            intd.id = 'intd' + (i + 1) + (j + 1);
+                            intd.id = 'intd' + (i + 1) + (j + 1) + (k + 1) + (l + 1);
                             intd.className += 'classintd' + (k + 1) + (l + 1);
                         }
                     }
@@ -57,8 +58,9 @@ function tableCreate() {
                 var tabl = document.createElement('table');
                 tabl.id = 'tabl' + (i+1) + (j+1);
                 let x = i;
+                let y = j;
                 tabl.onclick = function() {
-                    asd(x);
+                    putCard(x,y);
                 }
                 tabl.style.width = '100px';
                 tabl.style.height = '100px';
@@ -72,14 +74,14 @@ function tableCreate() {
                             var intd = intr.insertCell();
                             intd.appendChild(document.createTextNode('a'));
                             //intd.style.border = '1px solid black';
-                            intd.id = 'intd' + (i + 1) + (j + 1);
+                            intd.id = 'intd' + (i + 1) + (j + 1) + (k + 1) + (l + 1);
                             intd.className += 'classintd' + (k + 1) + (l + 1);
                             break;
                         } else {
                             var intd = intr.insertCell();
                             intd.appendChild(document.createTextNode('a'));
                             //intd.style.border = '1px solid black';
-                            intd.id = 'intd' + (i + 1) + (j + 1);
+                            intd.id = 'intd' + (i + 1) + (j + 1) + (k + 1) + (l + 1);
                             intd.className += 'classintd' + (k + 1) + (l + 1);
                         }
                     }

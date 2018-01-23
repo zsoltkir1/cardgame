@@ -63,23 +63,61 @@
                     setCardParameter('intd421',data.card4left);
                     setCardParameter('intd423',data.card4right);
                     setCardParameter('intd422',data.card4name);
-
                 });
+                    
                     socket.on('changeColor2',function(data){
-                    color=data.color;
-                    console.log(color);
-                    document.body.style.backgroundColor = color});
+                        color=data.color;
+                        console.log(color);
+                        document.body.style.backgroundColor = color});
                 
                     socket.on('choosenCard',function(data){
-                    console.log(data.card1top);
-                    console.log(data.card1bot);
-                    console.log(data.card1left);
-                    console.log(data.card1right);
-                    console.log(data.card1name);
-                    console.log(data.color);
-                    console.log(data.tableID);
-                    resetHandColor();
-                    document.getElementById(data.tableID).bgColor = data.color});
+                        console.log(data.card1top);
+                        console.log(data.card1bot);
+                        console.log(data.card1left);
+                        console.log(data.card1right);
+                        console.log(data.card1name);
+                        console.log(data.color);
+                        console.log(data.tableID);
+                        resetHandColor();
+                        document.getElementById(data.tableID).bgColor = data.color});
+                    
+                    socket.on('putCardGraphic',function(data){
+                        console.log(data.i);
+                        console.log('i és j közötti körátadás');
+                        console.log(data.j);
+                        console.log(data.top);
+                        setCardParameter(data.top,data.cardtop);
+                        setCardParameter(data.bot,data.cardbot);
+                        setCardParameter(data.left,data.cardleft);
+                        setCardParameter(data.right,data.cardright);
+                        setCardParameter(data.name,data.cardname);
+                        resetHandColor();
+                        document.getElementById(data.tableID).bgColor = data.color;
+                    });
+                    
+                    socket.on('cardChange',function(data){
+                        console.log(data.cardname);
+                        setCardParameter(data.top,data.cardtop);
+                        setCardParameter(data.bot,data.cardbot);
+                        setCardParameter(data.left,data.cardleft);
+                        setCardParameter(data.right,data.cardright);
+                        setCardParameter(data.name,data.cardname);
+                    });
+                    
+                    socket.on('boardChange',function(data){
+                        console.log('boardChange');
+                        console.log(data.color);
+                        document.getElementById(data.tableID).bgColor = data.color;
+                    });
+                    
+                    socket.on('boardDraw',function(data){
+                        setCardParameter(data.topname,data.top);
+                        setCardParameter(data.botname,data.bot);
+                        setCardParameter(data.leftname,data.left);
+                        setCardParameter(data.rightname,data.right);
+                        setCardParameter(data.namename,data.name);
+                        document.getElementById(data.tableID).bgColor = data.color;
+                    })
                     
 
             });
@@ -97,6 +135,12 @@
             function chooseCard(i) {
             console.log(i)
             socket.emit('chooseCard',{i})        
+            };
+            function putCard(i,j) {
+            console.log("kártyapakolás")
+            console.log(i)
+            console.log(j)
+            socket.emit('putCard',{i},{j})
             };
 
 
