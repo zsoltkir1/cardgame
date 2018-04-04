@@ -33,7 +33,8 @@ def joined(message):
         clientsInRoom[session.get('room')]=[]
         clientsInRoom[session.get('room')].append(clients)
     #hand=[Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)))]
-    hand=[randomCard(),randomCard(),randomCard(),randomCard()]
+    CardService=CardService()
+    hand=[CardService.randomCard(),CardService.randomCard(),CardService.randomCard(),CardService.randomCard()]
     hands.append(hand)
     session['player']=clients
     if session.get('room') in players:
