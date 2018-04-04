@@ -3,7 +3,7 @@ from random import randrange
 import json
 
 cards=[]
-with open('database/cards.json') as json_data:
+with open('database/cardsteszt.json') as json_data:
     d = json.load(json_data)
 for i in range(len(d)):
     card=d[i]

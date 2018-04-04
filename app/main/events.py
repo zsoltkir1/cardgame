@@ -2,6 +2,7 @@ from flask import session
 from flask_socketio import send, emit, join_room, leave_room
 from .. import socketio
 from app.main.model.card import Card
+from app.main.dao import CardService
 from random import randint
 
 clients = 0
@@ -31,7 +32,8 @@ def joined(message):
     else:
         clientsInRoom[session.get('room')]=[]
         clientsInRoom[session.get('room')].append(clients)
-    hand=[Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)))]
+    #hand=[Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)))]
+    hand=[randomCard(),randomCard(),randomCard(),randomCard()]
     hands.append(hand)
     session['player']=clients
     if session.get('room') in players:
