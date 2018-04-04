@@ -119,7 +119,7 @@ def putCard(i,j):
     room = session.get('room')
     player = session.get('player')-1
     if phases[room]=='put':
-        if (room,i['i'],j['j']) not in boards:
+        if player == clientsInRoom[room][0]-1 and turns[session.get('room')]=='red' and (room,i['i'],j['j']) not in boards:
             boards[room,i['i'],j['j']]=[actualCard[room][0],turns[room]]
             tableID = 'tabl' + str(i['i']+1) + str(j['j']+1)
             top='intd'+ str(i['i']+1) + str(j['j']+1) + '12'
@@ -187,6 +187,77 @@ def putCard(i,j):
                     emit('message', {'msg': 'Red player won the game Congratulate, please leave the room.'}, room=room)
                 else:
                     emit('message', {'msg': 'green player won the game Congratulate, please leave the room.'}, room=room)
+                    
+        #green player
+        if player == clientsInRoom[room][1]-1 and turns[session.get('room')]=='green' and (room,i['i'],j['j']) not in boards:
+            boards[room,i['i'],j['j']]=[actualCard[room][0],turns[room]]
+            tableID = 'tabl' + str(i['i']+1) + str(j['j']+1)
+            top='intd'+ str(i['i']+1) + str(j['j']+1) + '12'
+            bot='intd'+ str(i['i']+1) + str(j['j']+1) + '32'
+            left='intd'+ str(i['i']+1) + str(j['j']+1) + '21'
+            right='intd'+ str(i['i']+1) + str(j['j']+1) + '23'
+            name='intd'+ str(i['i']+1) + str(j['j']+1) + '22'
+            emit('putCardGraphic', {'tableID':tableID,'color':turns[session.get('room')],'cardtop':actualCard[room][0].top,'cardbot':actualCard[room][0].bot,'cardleft':actualCard[room][0].left,'cardright':actualCard[room][0].right,'cardname':actualCard[room][0].name,'i':i,'j':j,'top':top,'bot':bot,'left':left,'right':right,'name':name},room=room)
+            top='intd'+ str(actualCard[room][1]+1) + '12'
+            bot='intd'+ str(actualCard[room][1]+1) + '32'
+            left='intd'+ str(actualCard[room][1]+1) + '21'
+            right='intd'+ str(actualCard[room][1]+1) + '23'
+            name='intd'+ str(actualCard[room][1]+1) + '22'
+            hands[player][actualCard[room][1]]=Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)))
+            emit('cardChange',{'cardtop':hands[player][actualCard[room][1]].top,'cardbot':hands[player][actualCard[room][1]].bot,'cardleft':hands[player][actualCard[room][1]].left,'cardright':hands[player][actualCard[room][1]].right,'cardname':hands[player][actualCard[room][1]].name,'top':top,'bot':bot,'left':left,'right':right,'name':name},player=session.get('player'))
+            
+            
+            try:
+                if boards[room,i['i'],j['j']][0].top>boards[room,i['i']-1,j['j']][0].bot:
+                    boards[room,i['i']-1,j['j']][1]=turns[room]
+                    tableID = 'tabl' + str(i['i']) + str(j['j']+1)
+                    emit('boardChange',{'tableID':tableID,'color':turns[room]},room=room)
+            except:
+                pass
+            try:
+                if boards[room,i['i'],j['j']][0].bot>boards[room,i['i']+1,j['j']][0].top:
+                    boards[room,i['i']+1,j['j']][1]=turns[room]
+                    tableID = 'tabl' + str(i['i']+2) + str(j['j']+1)
+                    emit('boardChange',{'tableID':tableID,'color':turns[room]},room=room)
+            except:
+                pass
+            try:
+                if boards[room,i['i'],j['j']][0].left>boards[room,i['i'],j['j']-1][0].right:
+                    boards[room,i['i'],j['j']-1][1]=turns[room]
+                    tableID = 'tabl' + str(i['i']+1) + str(j['j'])
+                    emit('boardChange',{'tableID':tableID,'color':turns[room]},room=room)
+            except:
+                pass
+            try:
+                if boards[room,i['i'],j['j']][0].right>boards[room,i['i'],j['j']+1][0].left:
+                    boards[room,i['i'],j['j']+1][1]=turns[room]
+                    tableID = 'tabl' + str(i['i']+1) + str(j['j']+2)
+                    emit('boardChange',{'tableID':tableID,'color':turns[room]},room=room)
+            except:
+                pass
+            
+            
+            db[room]+=1
+            phases[room]='select'
+            if turns[room]=='green':
+                turns[room]='red'
+            else:
+                turns[room]='green'
+                
+            if db[room]>24:
+                red=0
+                green=0
+                for k in range(5):
+                    for l in range(5):
+                        if boards[room,k,l][1]=='red':
+                            red+=1
+                        elif boards[room,k,l][1]=='green':
+                            green+=1
+                if red>green:
+                    emit('message', {'msg': 'Red player won the game Congratulate, please leave the room.'}, room=room)
+                else:
+                    emit('message', {'msg': 'green player won the game Congratulate, please leave the room.'}, room=room)
+        
         else:
             pass
     else:
