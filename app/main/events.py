@@ -3,7 +3,7 @@ from flask_socketio import send, emit, join_room, leave_room
 from .. import socketio
 from app.main.model.card import Card
 from app.main.dao import CardService
-from random import randint
+from random import randint,randrange
 
 clients = 0
 clientsInRoom = {}
@@ -14,6 +14,7 @@ turns = {}
 db = {}
 phases = {}
 actualCard = {}
+decks = {}
 
 @socketio.on('joined', namespace='/chat')
 def joined(message):
@@ -24,6 +25,7 @@ def joined(message):
     global turns
     global phases
     global db
+    global decks
     room = session.get('room')
     join_room(room)
     clients+=1
@@ -33,10 +35,11 @@ def joined(message):
         clientsInRoom[session.get('room')]=[]
         clientsInRoom[session.get('room')].append(clients)
     #hand=[Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)))]
-    CardService=CardService()
-    hand=[CardService.randomCard(),CardService.randomCard(),CardService.randomCard(),CardService.randomCard()]
-    hands.append(hand)
     session['player']=clients
+    decks[session.get('player')]=CardService().initDeck()
+    hand=[decks[session.get('player')].pop(randrange(len(decks[session.get('player')]))),decks[session.get('player')].pop(randrange(len(decks[session.get('player')]))),decks[session.get('player')].pop(randrange(len(decks[session.get('player')]))),decks[session.get('player')].pop(randrange(len(decks[session.get('player')])))]
+    print(decks[session.get('player')]) 
+    hands.append(hand)   
     if session.get('room') in players:
         players[session.get('room')].append(clients)
     else:
@@ -136,7 +139,8 @@ def putCard(i,j):
             left='intd'+ str(actualCard[room][1]+1) + '21'
             right='intd'+ str(actualCard[room][1]+1) + '23'
             name='intd'+ str(actualCard[room][1]+1) + '22'
-            hands[player][actualCard[room][1]]=Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)))
+            hands[player][actualCard[room][1]]=decks[session.get('player')].pop(randrange(len(decks[session.get('player')])))
+            print(decks[session.get('player')])
             emit('cardChange',{'cardtop':hands[player][actualCard[room][1]].top,'cardbot':hands[player][actualCard[room][1]].bot,'cardleft':hands[player][actualCard[room][1]].left,'cardright':hands[player][actualCard[room][1]].right,'cardname':hands[player][actualCard[room][1]].name,'top':top,'bot':bot,'left':left,'right':right,'name':name},player=session.get('player'))
             
             
@@ -206,7 +210,8 @@ def putCard(i,j):
             left='intd'+ str(actualCard[room][1]+1) + '21'
             right='intd'+ str(actualCard[room][1]+1) + '23'
             name='intd'+ str(actualCard[room][1]+1) + '22'
-            hands[player][actualCard[room][1]]=Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)))
+            hands[player][actualCard[room][1]]=decks[session.get('player')].pop(randrange(len(decks[session.get('player')])))
+            print(decks[session.get('player')])
             emit('cardChange',{'cardtop':hands[player][actualCard[room][1]].top,'cardbot':hands[player][actualCard[room][1]].bot,'cardleft':hands[player][actualCard[room][1]].left,'cardright':hands[player][actualCard[room][1]].right,'cardname':hands[player][actualCard[room][1]].name,'top':top,'bot':bot,'left':left,'right':right,'name':name},player=session.get('player'))
             
             
