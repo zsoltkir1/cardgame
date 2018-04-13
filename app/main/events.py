@@ -193,7 +193,7 @@ def putCard(i,j):
                 if red>green:
                     emit('message', {'msg': 'Red player won the game Congratulate, please leave the room.'}, room=room)
                 else:
-                    emit('message', {'msg': 'green player won the game Congratulate, please leave the room.'}, room=room)
+                    emit('message', {'msg': 'Green player won the game Congratulate, please leave the room.'}, room=room)
                     
         #green player
         if player == clientsInRoom[room][1]-1 and turns[session.get('room')]=='green' and (room,i['i'],j['j']) not in boards:
@@ -264,7 +264,7 @@ def putCard(i,j):
                 if red>green:
                     emit('message', {'msg': 'Red player won the game Congratulate, please leave the room.'}, room=room)
                 else:
-                    emit('message', {'msg': 'green player won the game Congratulate, please leave the room.'}, room=room)
+                    emit('message', {'msg': 'Green player won the game Congratulate, please leave the room.'}, room=room)
         
         else:
             pass
