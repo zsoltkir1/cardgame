@@ -96,14 +96,14 @@ def chooseCard(i):
         player = session.get('player')-1
         if player == clientsInRoom[room][0]-1 and turns[session.get('room')]=='red':
             tableID = 'tabl' + str(i['i']+1)
-            actualCard[room] = Card(hands[player][i['i']].top,hands[player][i['i']].bot,hands[player][i['i']].left,hands[player][i['i']].right,hands[player][i['i']].name),i['i']
+            actualCard[room] = Card(hands[player][i['i']].name,hands[player][i['i']].top,hands[player][i['i']].bot,hands[player][i['i']].left,hands[player][i['i']].right),i['i']
             color="red"
             emit('choosenCard',{'tableID':tableID,'color':color,'card1top':actualCard[room][0].top,'card1bot':actualCard[room][0].bot,'card1left':actualCard[room][0].left,'card1right':actualCard[room][0].right,'card1name':actualCard[room][0].name},player=session.get('player'))
             #turns[session.get('room')]="green"
             phases[room]='put'
         elif player == clientsInRoom[room][1]-1 and turns[session.get('room')]=='green':
             tableID = 'tabl' + str(i['i']+1)
-            actualCard[room] = Card(hands[player][i['i']].top,hands[player][i['i']].bot,hands[player][i['i']].left,hands[player][i['i']].right,hands[player][i['i']].name),i['i']
+            actualCard[room] = Card(hands[player][i['i']].name,hands[player][i['i']].top,hands[player][i['i']].bot,hands[player][i['i']].left,hands[player][i['i']].right),i['i']
             color="green"
             emit('choosenCard',{'tableID':tableID,'color':color,'card1top':actualCard[room][0].top,'card1bot':actualCard[room][0].bot,'card1left':actualCard[room][0].left,'card1right':actualCard[room][0].right,'card1name':actualCard[room][0].name},player=session.get('player'))
             #turns[session.get('room')]="red"
