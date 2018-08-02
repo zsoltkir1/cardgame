@@ -5,5 +5,6 @@ from wtforms.validators import Required
 
 class LoginForm(Form):
     name = StringField('Név', validators=[Required()])
-    room = StringField('Room', validators=[Required()])
+    room = StringField('Szoba', validators=[Required()])
+    owner = StringField('Pakli', validators=[Required()])
     submit = SubmitField('Belépek')

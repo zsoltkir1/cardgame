@@ -36,7 +36,8 @@ def joined(message):
         clientsInRoom[session.get('room')].append(clients)
     #hand=[Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)))]
     session['player']=clients
-    decks[session.get('player')]=CardService().initDeck()
+    decks[session.get('player')]=CardService().readDeckfromMongoDB(session.get('owner'))
+    print(decks[session.get('player')])
     hand=[decks[session.get('player')].pop(randrange(len(decks[session.get('player')]))),decks[session.get('player')].pop(randrange(len(decks[session.get('player')]))),decks[session.get('player')].pop(randrange(len(decks[session.get('player')]))),decks[session.get('player')].pop(randrange(len(decks[session.get('player')])))]
     print(decks[session.get('player')]) 
     hands.append(hand)   
@@ -92,7 +93,7 @@ def chooseCard(i):
     global actualCard
     global clientsInRoom
     room = session.get('room')
-    if phases[room]=='select':
+    if phases[room]=='select' or phases[room]=='put':
         player = session.get('player')-1
         if player == clientsInRoom[room][0]-1 and turns[session.get('room')]=='red':
             tableID = 'tabl' + str(i['i']+1)

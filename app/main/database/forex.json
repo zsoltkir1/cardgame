@@ -1,0 +1,100 @@
+{"Cards":[
+    {
+        "left": "7", 
+        "top": "5", 
+        "right": "5", 
+        "name": "Long", 
+        "bottom": "6"
+    }, 
+    {
+        "left": "6", 
+        "top": "5", 
+        "right": "3", 
+        "name": "DNZS", 
+        "bottom": "7"
+    },
+    {
+        "left": "1", 
+        "top": "3", 
+        "right": "6", 
+        "name": "Short", 
+        "bottom": "4"
+    }, 
+    {
+        "left": "8", 
+        "top": "3", 
+        "right": "1", 
+        "name": "Soybeans", 
+        "bottom": "9"
+    },
+    {
+        "left": "8", 
+        "top": "5", 
+        "right": "4", 
+        "name": "Bollinger", 
+        "bottom": "7"
+    },
+    {
+        "left": "8", 
+        "top": "7", 
+        "right": "6", 
+        "name": "Arima", 
+        "bottom": "4"
+    },
+    {
+        "left": "0", 
+        "top": "1", 
+        "right": "1", 
+        "name": "-400EUR", 
+        "bottom": "1"
+    },
+    {
+        "left": "7", 
+        "top": "4", 
+        "right": "8", 
+        "name": "Reketye", 
+        "bottom": "3"
+    },
+    {
+        "left": "3", 
+        "top": "1", 
+        "right": "8", 
+        "name": "Threadripper", 
+        "bottom": "7"
+    },
+    {
+        "left": "9", 
+        "top": "3", 
+        "right": "1", 
+        "name": "BorosB", 
+        "bottom": "2"
+    },
+    {
+        "left": "3",
+        "top":"8",
+        "right": "4",
+        "name": "KWszunet",
+        "bottom": "5"
+    },
+    {
+        "left": "6",
+        "top":"6",
+        "right": "7",
+        "name": "theMemeLord",
+        "bottom": "4"
+    },
+    {
+        "left": "5",
+        "top":"6",
+        "right": "7",
+        "name": "Tesla",
+        "bottom": "8"
+    },
+    {
+        "left": "3",
+        "top":"4",
+        "right": "8",
+        "name": "Venti",
+        "bottom": "2"
+    }
+]}

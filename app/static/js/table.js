@@ -20,8 +20,8 @@ function tableCreate() {
                 tabl.onclick = function() {
                     putCard(x,y);
                 }
-                tabl.style.width = '100px';
-                tabl.style.height = '100px';
+                tabl.style.width = '150px';
+                tabl.style.height = '150px';
                 tabl.style.border = '1px solid black';
                 //tabl.onclick = function (){asd(i);}
 
@@ -62,8 +62,8 @@ function tableCreate() {
                 tabl.onclick = function() {
                     putCard(x,y);
                 }
-                tabl.style.width = '100px';
-                tabl.style.height = '100px';
+                tabl.style.width = '150px';
+                tabl.style.height = '150px';
                 tabl.style.border = '1px solid black';
                 //tabl.onclick = function (){asd(i,j);}
 
@@ -102,7 +102,7 @@ function tableCreateForAvailableCards() {
         availableCards = document.getElementById('availableCards'); //.appendChild(element);
     tbl = document.createElement('table');
     tbl.style.width = '400px';
-    tbl.style.height = '100px';
+    tbl.style.height = '150px';
     tbl.style.border = '1px solid black';
 
     for (var i = 0; i < 1; i++) {
@@ -118,8 +118,8 @@ function tableCreateForAvailableCards() {
                 tabl.onclick = function() {
                     chooseCard(y);
                 }
-                tabl.style.width = '100px';
-                tabl.style.height = '100px';
+                tabl.style.width = '150px';
+                tabl.style.height = '150px';
                 tabl.style.border = '1px solid black';
 
                 for (var k = 0; k < 3; k++) {
@@ -161,8 +161,8 @@ function tableCreateForAvailableCards() {
                 tabl.onclick = function() {
                     chooseCard(y);
                 }
-                tabl.style.width = '100px';
-                tabl.style.height = '100px';
+                tabl.style.width = '150px';
+                tabl.style.height = '150px';
                 tabl.style.border = '1px solid black';
 
                 for (var k = 0; k < 3; k++) {
