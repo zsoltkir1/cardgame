@@ -11,6 +11,16 @@ for i in range(len(d)):
     card=d[i]
     cards.append(Card(card.get('name'),card.get('top'),card.get('bottom'),card.get('left'),card.get('right')))'''
 
+class UserService():
+    def register(self):
+        pass
+        
+    def login(self):
+        pass
+        
+    def logout(self):
+        pass
+    
 class CardService():       
     
     def readDeckfromJson(self):
@@ -32,7 +42,7 @@ class CardService():
         for name in cardNames:
             cursor = db.cards.find({"name": name})
             card = cursor[0]
-            cards.append(Card(card.get('name'),card.get('top'),card.get('bottom'),card.get('left'),card.get('right')))#(cursor[0])
+            cards.append(Card(card.get('name'),card.get('top'),card.get('bottom'),card.get('left'),card.get('right')))
         return cards
         
     #def randomCard(self,cards):
