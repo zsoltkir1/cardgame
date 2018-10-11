@@ -1,4 +1,4 @@
-from flask_wtf import Form
+'''from flask_wtf import Form
 from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField, validators
 from wtforms.validators import DataRequired
 #from flask_bootstrap import Bootstrap
@@ -46,4 +46,4 @@ class Register(MethodView):
                 #Email sending test
                 html=render_template("email/welcome.html", email=user.name, token=user.token)
                 send_email("de.ik.ejournal@gmail.com","ejournal",user.email,"Registration",html)
-                return redirect('/')
+                return redirect('/')'''

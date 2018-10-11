@@ -29,6 +29,8 @@ def joined(message):
     room = session.get('room')
     join_room(room)
     clients+=1
+    print("KLIENSEK SZÁMA" + clients)  #debug
+    print(session.get('player'))
     if session.get('room') in clientsInRoom:
         clientsInRoom[session.get('room')].append(clients)
     else:
