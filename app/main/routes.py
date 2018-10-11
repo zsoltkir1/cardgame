@@ -8,13 +8,13 @@ from flask_login import UserMixin, LoginManager, login_user, logout_user, curren
 #from chat import app
 
 
-#@main.route('/', methods=['GET', 'POST'])
-#def index():
-#    """Index page."""
-#    return render_template('index.html')
-
 @main.route('/', methods=['GET', 'POST'])
 def index():
+    """Index page."""
+    return render_template('index2.html')
+
+@main.route('/game', methods=['GET', 'POST'])
+def lobby():
     """Login form to enter a room."""
     form = LoginForm()
     if form.validate_on_submit():
@@ -26,7 +26,7 @@ def index():
         form.name.data = session.get('name', '')
         form.room.data = session.get('room', '')
         form.owner.data = session.get('owner', '')
-    return render_template('index.html', form=form)
+    return render_template('lobby.html', form=form)
 
 
 @main.route('/chat')
@@ -37,7 +37,7 @@ def chat():
     room = session.get('room', '')
     owner = session.get('owner', '')
     if name == '' or room == '':
-        return redirect(url_for('.index'))
+        return redirect(url_for('.lobby'))
     return render_template('chat.html', name=name, room=room)
     
 @main.route('/register', methods=['GET', 'POST'])
