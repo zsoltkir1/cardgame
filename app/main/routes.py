@@ -1,10 +1,11 @@
 from flask import flash, session, redirect, url_for, render_template, request
 from . import main
 from .forms import LoginForm,RegisterForm,LoginForm2,IndexForm
-from chat import User
+#from chat import User
+from app.main.user import User
 from app.main.emailservice import send_email, generate_confirmation_token, confirm_token
 from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user
-from chat import app
+#from chat import app
 
 
 #@main.route('/', methods=['GET', 'POST'])

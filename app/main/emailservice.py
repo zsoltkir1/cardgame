@@ -2,7 +2,8 @@ import smtplib
 from flask import flash, redirect, url_for, render_template
 from itsdangerous import URLSafeTimedSerializer
 from flask.views import MethodView
-from chat import app
+#from chat import app
+from app import app
 from flask_login import current_user
 from mailer import Message
 
