@@ -1,0 +1,100 @@
+{"Cards":[
+    {
+        "left": "9", 
+        "top": "5", 
+        "right": "9", 
+        "name": "Nazi", 
+        "bottom": "7"
+    }, 
+    {
+        "left": "8", 
+        "top": "9", 
+        "right": "1", 
+        "name": "Jihad", 
+        "bottom": "9"
+    },
+    {
+        "left": "1", 
+        "top": "8", 
+        "right": "6", 
+        "name": "Gayfc", 
+        "bottom": "8"
+    }, 
+    {
+        "left": "7", 
+        "top": "7", 
+        "right": "8", 
+        "name": "PizzaButt", 
+        "bottom": "9"
+    },
+    {
+        "left": "3", 
+        "top": "5", 
+        "right": "4", 
+        "name": "KatholicZombie", 
+        "bottom": "5"
+    },
+    {
+        "left": "8", 
+        "top": "9", 
+        "right": "5", 
+        "name": "siegHeil", 
+        "bottom": "2"
+    },
+    {
+        "left": "4", 
+        "top": "7", 
+        "right": "7", 
+        "name": "gayk47", 
+        "bottom": "4"
+    },
+    {
+        "left": "4", 
+        "top": "3", 
+        "right": "2", 
+        "name": "ass", 
+        "bottom": "1"
+    },
+    {
+        "left": "9", 
+        "top": "0", 
+        "right": "9", 
+        "name": "ErvinRommel", 
+        "bottom": "9"
+    },
+    {
+        "left": "9", 
+        "top": "9", 
+        "right": "0", 
+        "name": "Hitler", 
+        "bottom": "9"
+    },
+    {
+        "left": "3",
+        "top":"5",
+        "right": "7",
+        "name": "BurgerPawn",
+        "bottom": "5"
+    },
+    {
+        "left": "6",
+        "top":"8",
+        "right": "1",
+        "name": "peasant",
+        "bottom": "5"
+    },
+    {
+        "left": "8",
+        "top":"3",
+        "right": "1",
+        "name": "bread",
+        "bottom": "5"
+    },
+    {
+        "left": "6",
+        "top":"3",
+        "right": "6",
+        "name": "fastFox",
+        "bottom": "8"
+    }
+]}

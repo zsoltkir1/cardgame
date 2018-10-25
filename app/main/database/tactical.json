@@ -1,0 +1,100 @@
+{"Cards":[
+    {
+        "left": "0", 
+        "top": "0", 
+        "right": "9", 
+        "name": "Left", 
+        "bottom": "0"
+    }, 
+    {
+        "left": "9", 
+        "top": "0", 
+        "right": "0", 
+        "name": "Right", 
+        "bottom": "0"
+    },
+    {
+        "left": "0", 
+        "top": "0", 
+        "right": "0", 
+        "name": "Top", 
+        "bottom": "9"
+    }, 
+    {
+        "left": "0", 
+        "top": "9", 
+        "right": "0", 
+        "name": "Bottom", 
+        "bottom": "0"
+    },
+    {
+        "left": "9", 
+        "top": "0", 
+        "right": "0", 
+        "name": "cornerStar", 
+        "bottom": "9"
+    },
+    {
+        "left": "0", 
+        "top": "0", 
+        "right": "9", 
+        "name": "cornerKing", 
+        "bottom": "9"
+    },
+    {
+        "left": "0", 
+        "top": "0", 
+        "right": "0", 
+        "name": "lastcard", 
+        "bottom": "0"
+    },
+    {
+        "left": "0", 
+        "top": "9", 
+        "right": "9", 
+        "name": "cornerCeasar", 
+        "bottom": "0"
+    },
+    {
+        "left": "9", 
+        "top": "9", 
+        "right": "0", 
+        "name": "cornerRekter", 
+        "bottom": "0"
+    },
+    {
+        "left": "5", 
+        "top": "6", 
+        "right": "7", 
+        "name": "linear", 
+        "bottom": "8"
+    },
+    {
+        "left": "8",
+        "top":"8",
+        "right": "8",
+        "name": "nyolc",
+        "bottom": "8"
+    },
+    {
+        "left": "3",
+        "top":"5",
+        "right": "8",
+        "name": "szendo",
+        "bottom": "1"
+    },
+    {
+        "left": "7",
+        "top":"6",
+        "right": "3",
+        "name": "karaj",
+        "bottom": "2"
+    },
+    {
+        "left": "5",
+        "top":"2",
+        "right": "2",
+        "name": "500FT",
+        "bottom": "6"
+    }
+]}

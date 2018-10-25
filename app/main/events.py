@@ -27,21 +27,20 @@ def joined(message):
     global db
     global decks
     room = session.get('room')
+    print("SZOBA NEVE: "+str(session.get('room')))
     join_room(room)
     clients+=1
+    print(session)
     print("KLIENSEK SZÁMA" + str(clients))  #debug
-    print(session.get('player'))
+    
     if session.get('room') in clientsInRoom:
         clientsInRoom[session.get('room')].append(clients)
     else:
         clientsInRoom[session.get('room')]=[]
         clientsInRoom[session.get('room')].append(clients)
-    #hand=[Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9))),Card(str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)),str(randint(1, 9)))]
     session['player']=clients
     decks[session.get('player')]=CardService().readDeckfromMongoDB(session.get('owner'))
-    print(decks[session.get('player')])
     hand=[decks[session.get('player')].pop(randrange(len(decks[session.get('player')]))),decks[session.get('player')].pop(randrange(len(decks[session.get('player')]))),decks[session.get('player')].pop(randrange(len(decks[session.get('player')]))),decks[session.get('player')].pop(randrange(len(decks[session.get('player')])))]
-    print(decks[session.get('player')]) 
     hands.append(hand)   
     if session.get('room') in players:
         players[session.get('room')].append(clients)
@@ -60,6 +59,7 @@ def joined(message):
     emit('status', {'msg': session.get('name') + ' csatlakozott a chatszobához.'}, room=room)
     print(room)
     print(session)
+    print("PLAYER NEVE"+str(session.get('player')))
     print(phases[room])
     for k in range(5):
         for l in range(5):
@@ -102,21 +102,18 @@ def chooseCard(i):
             actualCard[room] = Card(hands[player][i['i']].name,hands[player][i['i']].top,hands[player][i['i']].bot,hands[player][i['i']].left,hands[player][i['i']].right),i['i']
             color="red"
             emit('choosenCard',{'tableID':tableID,'color':color,'card1top':actualCard[room][0].top,'card1bot':actualCard[room][0].bot,'card1left':actualCard[room][0].left,'card1right':actualCard[room][0].right,'card1name':actualCard[room][0].name},player=session.get('player'))
-            #turns[session.get('room')]="green"
             phases[room]='put'
         elif player == clientsInRoom[room][1]-1 and turns[session.get('room')]=='green':
             tableID = 'tabl' + str(i['i']+1)
             actualCard[room] = Card(hands[player][i['i']].name,hands[player][i['i']].top,hands[player][i['i']].bot,hands[player][i['i']].left,hands[player][i['i']].right),i['i']
             color="green"
             emit('choosenCard',{'tableID':tableID,'color':color,'card1top':actualCard[room][0].top,'card1bot':actualCard[room][0].bot,'card1left':actualCard[room][0].left,'card1right':actualCard[room][0].right,'card1name':actualCard[room][0].name},player=session.get('player'))
-            #turns[session.get('room')]="red"
             phases[room]='put'
         else:
             pass
     else:
         pass
 
-#{'name':session.get('player')},room=session.get('room') #ezt még feltudom használni majd
 
 @socketio.on('putCard', namespace='/chat')
 def putCard(i,j):
@@ -291,6 +288,10 @@ def changeColor(i):
 @socketio.on('requestInitHand', namespace='/chat')
 def initHand():
     player = session.get('player')-1
+    print(hands[player][0].top)
+    print(hands[player][1].top)
+    print(hands[player][2].top)
+    print(hands[player][3].top)
     emit('recieveInitHand', {'card1top':hands[player][0].top,'card1bot':hands[player][0].bot,'card1left':hands[player][0].left,'card1right':hands[player][0].right,'card1name':hands[player][0].name,'card2top':hands[player][1].top,'card2bot':hands[player][1].bot,'card2left':hands[player][1].left,'card2right':hands[player][1].right,'card2name':hands[player][1].name,'card3top':hands[player][2].top,'card3bot':hands[player][2].bot,'card3left':hands[player][2].left,'card3right':hands[player][2].right,'card3name':hands[player][2].name,'card4top':hands[player][3].top,'card4bot':hands[player][3].bot,'card4left':hands[player][3].left,'card4right':hands[player][3].right,'card4name':hands[player][3].name}, player=player)
     
     

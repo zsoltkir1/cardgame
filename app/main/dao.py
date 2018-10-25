@@ -43,6 +43,8 @@ class CardService():
             cursor = db.cards.find({"name": name})
             card = cursor[0]
             cards.append(Card(card.get('name'),card.get('top'),card.get('bottom'),card.get('left'),card.get('right')))
+        print("------------------------------------------------------------------------------------------------------------------")
+        print(cards)
         return cards
         
     #def randomCard(self,cards):

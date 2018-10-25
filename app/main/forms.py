@@ -1,12 +1,13 @@
 from flask_wtf import Form
-from wtforms.fields import StringField, SubmitField, PasswordField, BooleanField
+from wtforms.fields import StringField, SubmitField, PasswordField, BooleanField, SelectField
 from wtforms.validators import Required
+#from flask_login import UserMixin, LoginManager,current_user
 
 
 class LoginForm(Form): #valójában ez nem loginhoz hanem szobába való belépéshez kell
-    name = StringField('Név', validators=[Required()])
+    #name = StringField('Név', validators=[Required()])
     room = StringField('Szoba', validators=[Required()])
-    owner = StringField('Pakli', validators=[Required()])
+    owner = SelectField('Pakli', choices=[], validators=[Required()])#StringField('Pakli', validators=[Required()])
     submit = SubmitField('Belépek')
 
 class RegisterForm(Form):

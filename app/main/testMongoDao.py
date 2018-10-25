@@ -6,9 +6,9 @@ def storeDeck():
     db = client.cardGame
     #db.decks.insert_one({"owner":"dyntell","cards":['hegedAtty', 'zsoltkir1', 'PinterUr', 'Kriszegy..', 'Pitor', 'LosTibi', 'Jabba', 'unlucky', 'ZSAAAA', 'Partner', 'Danika', 'Rostas', 'Rip', 'NolifeMari', 'Dual', 'GTX1080TI', 'CsicskaBalint', 'anyad']})
     #db.decks.insert_one({"owner":"forex","cards:":['hegedAtty', 'zsoltkir1', 'PinterUr', 'Kriszegy..','Pitor','Long', 'DNZS', 'Short', 'Soybeans', 'Bollinger', 'Arima', '-400EUR', 'Reketye', 'Threadripper', 'BorosB', 'KWszunet', 'theMemeLord', 'Tesla', 'Venti']})
-    db.decks.insert_one({"owner":"wow","cards:":['UndeadMage', 'BloodElfPala', 'TaurenShaman', 'PandarenMonk', 'HumanLock', 'GnomeMage', 'TrollHunter', 'Warlock', 'Ilidian', 'BlackTemple', 'Horde', 'Alliance', 'Orgrimmar', 'OrcWarrior', 'DeathKnight', 'UndeadPriest', 'TaurenDruid', 'BloodElfRogue', 'Karazhan', 'ZulFarrak', 'GruulsLair', 'Nexus']})
-    db.decks.insert_one({"owner":"balint","cards:":['Laptop', 'Szekreny', 'Idojaras', 'Munka', 'Konferencia', 'NincsIdom', 'NemErdekel', 'SzopjatokLe', 'CsicskaVagyok', 'Papirok', 'LatnomKellene', 'Ensemble', 'Hawkes', 'TitanX', 'Google', 'NemHallottam', 'SzaraSkype', 'NemErekRa', 'Boston', 'USA', 'KPMG', 'JustBalint', 'IKEA']})
-    db.decks.insert_one({"owner":"barca","cards:":['Pique', 'Ronaldinho', 'Messi', 'Puyol', 'Xavi', 'Iniesta', 'Dembele', 'Suarez', 'Rakitic', 'Alba', 'Stegen', 'Alves', 'Kutinnyo', 'Umtiti', 'Turan', 'Gomes', 'Munir', 'Rafinha', 'Guardiola', 'Ronaldo', 'Neymar', 'Paco', 'Tito', 'CR7']})
+    #db.decks.insert_one({"owner":"wow","cards:":['UndeadMage', 'BloodElfPala', 'TaurenShaman', 'PandarenMonk', 'HumanLock', 'GnomeMage', 'TrollHunter', 'Warlock', 'Ilidian', 'BlackTemple', 'Horde', 'Alliance', 'Orgrimmar', 'OrcWarrior', 'DeathKnight', 'UndeadPriest', 'TaurenDruid', 'BloodElfRogue', 'Karazhan', 'ZulFarrak', 'GruulsLair', 'Nexus']})
+    #db.decks.insert_one({"owner":"balint","cards:":['Laptop', 'Szekreny', 'Idojaras', 'Munka', 'Konferencia', 'NincsIdom', 'NemErdekel', 'SzopjatokLe', 'CsicskaVagyok', 'Papirok', 'LatnomKellene', 'Ensemble', 'Hawkes', 'TitanX', 'Google', 'NemHallottam', 'SzaraSkype', 'NemErekRa', 'Boston', 'USA', 'KPMG', 'JustBalint', 'IKEA']})
+    #db.decks.insert_one({"owner":"barca","cards:":['Pique', 'Ronaldinho', 'Messi', 'Puyol', 'Xavi', 'Iniesta', 'Dembele', 'Suarez', 'Rakitic', 'Alba', 'Stegen', 'Alves', 'Kutinnyo', 'Umtiti', 'Turan', 'Gomes', 'Munir', 'Rafinha', 'Guardiola', 'Ronaldo', 'Neymar', 'Paco', 'Tito', 'CR7']})
     print("Deck stored")
     
 def readDeck():
@@ -49,11 +49,11 @@ if __name__ == "__main__":
     #importDeck("database/dyntell.json")
     #importDeck("database/forex.json")
     #importDeck("database/wow.json")
-    #importDeck("database/balint.json")
-    #importDeck("database/barca.json")
-    printCards("database/wow.json")
-    printCards("database/balint.json")
-    printCards("database/barca.json")
+    importDeck("database/scram.json")
+    importDeck("database/tactical.json")
+    #printCards("database/wow.json")
+    #printCards("database/balint.json")
+    #printCards("database/barca.json")
     storeDeck()
     
     
