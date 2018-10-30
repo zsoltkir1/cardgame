@@ -3,6 +3,7 @@ function setCardParameter(cardParameterPlace,cardParameterValue) {
     document.getElementById(cardParameterPlace).appendChild(document.createTextNode(cardParameterValue));
 }
 
+
 function resetHandColor(){
     document.getElementById('tabl1').bgColor = 'white';
     document.getElementById('tabl2').bgColor = 'white';

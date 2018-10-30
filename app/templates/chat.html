@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/grid.css') }}">
         <script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/table.js') }}"></script>
@@ -110,6 +111,11 @@
                         document.getElementById(data.tableID).bgColor = data.color;
                     });
                     
+                    socket.on('phaseChange', function(data) {
+                    document.getElementById(data.textElementId).innerHTML = '';
+                    document.getElementById(data.textElementId).appendChild(document.createTextNode(data.playerPhase));
+                    });
+                    
                     socket.on('boardDraw',function(data){
                         setCardParameter(data.topname,data.top);
                         setCardParameter(data.botname,data.bot);
@@ -118,7 +124,7 @@
                         setCardParameter(data.namename,data.name);
                         document.getElementById(data.tableID).bgColor = data.color;
                     })
-                    
+                                       
 
             });
             
@@ -150,8 +156,11 @@
     <body>
     <div id=wrapper>
         <div id=second>
-            <div id=chatDiv>
-                <h1>Live Chat</h1>
+            <div class="row">
+                <h1 class="col span-1-of-2" id="phaseText"></h1>
+                <h1 class="col span-1-of-2">Live Chat</h1>
+            </div>
+            <div id=chatDiv>  
                 <textarea id="chat" cols=96% rows=24% disabled></textarea><br><br>
                 <input id="text" size=96% placeholder="Írj ide valamit."><br><br>
                 <a href="#" onclick="leave_room();">Kilépés</a>

@@ -1,16 +1,58 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
     <head>
-        <title>zsoltkir1's CardGame</title>
+        <link rel="stylesheet" type="text/css" href="static/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="static/css/grid.css">
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        <title>Card Game</title>
     </head>
     <body>
-        <h1>Az oldal jelenleg karbantartás alatt van!</h1>
-<h1>Itt lesz majd a kártyajáték de még nagyon nincs kész</h1>
-        <form method="POST">
-            {{ form.hidden_tag() }}
-            {{ form.name.label }}: {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br>
-            {{ form.room.label }}: {{ form.room() }} {% for error in form.room.errors %}{{ error }}{% endfor %}<br>
-            {{ form.owner.label }}: {{ form.owner() }} {% for error in form.owner.errors %}{{ error }}{% endfor %}<br>
-            {{ form.submit() }}
-        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <header class="header-bg">
+            <nav>
+                <div class="row">
+                    <ul class="main-nav">
+                        {% if current_user.is_authenticated %}<li><a href="http://192.168.125.231:5004/logout">Logout</a></li>{% else %}<li><a href="http://192.168.125.231:5004/login">Login</a></li>{% endif %}
+                        <li><a href="http://192.168.125.231:5004/register">Register</a></li>
+                        <li><a href="http://192.168.125.231:5004/game">Play Game</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="section-img">
+            <ul class="img-showcase clearfix">
+                <li>
+                    <figure class="game-photo">
+                        <img src="static/img/1.jpg" alt="In Game I">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="game-photo">
+                        <img src="static/img/1.jpg" alt="In Game II">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="game-photo">
+                        <img src="static/img/1.jpg" alt="In Game III">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="game-photo">
+                        <img src="static/img/1.jpg" alt="Chat">
+                    </figure>
+                </li>
+            </ul>    
+        </section>
     </body>
 </html>

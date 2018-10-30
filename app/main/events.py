@@ -26,6 +26,7 @@ def joined(message):
     global phases
     global db
     global decks
+    global player1,player2
     room = session.get('room')
     print("SZOBA NEVE: "+str(session.get('room')))
     join_room(room)
@@ -48,14 +49,18 @@ def joined(message):
         players[session.get('room')]=[]
         players[session.get('room')].append(clients)
     if len(players[session.get('room')])==1:
+        player1=[session.get('name')]
         turns[session.get('room')]='nothing'
         phases[session.get('room')]='nothing'
         actualCard[session.get('room')]='nothing'
+        emit('phaseChange',{'textElementId':"phaseText",'playerPhase':str(player1[0])+"'s turn"},room=room)
     if len(players[session.get('room')])==2:
+        player2=[session.get('name')]
         db[room]=1
         turns[session.get('room')]='red'
         phases[session.get('room')]='select'
         actualCard[session.get('room')]='nothing'
+        emit('phaseChange',{'textElementId':"phaseText",'playerPhase':str(player1[0])+"'s turn"},room=room)
     emit('status', {'msg': session.get('name') + ' csatlakozott a chatszobához.'}, room=room)
     print(room)
     print(session)
@@ -122,8 +127,10 @@ def putCard(i,j):
     global actualCard
     global boards
     global db
+    global playerTurns
+    global player1,player2
     room = session.get('room')
-    player = session.get('player')-1
+    player = session.get('player')-1  
     if phases[room]=='put':
         if player == clientsInRoom[room][0]-1 and turns[session.get('room')]=='red' and (room,i['i'],j['j']) not in boards:
             boards[room,i['i'],j['j']]=[actualCard[room][0],turns[room]]
@@ -178,8 +185,10 @@ def putCard(i,j):
             phases[room]='select'
             if turns[room]=='green':
                 turns[room]='red'
+                emit('phaseChange',{'textElementId':"phaseText",'playerPhase':str(player1[0])+"'s turn"},room=room)
             else:
                 turns[room]='green'
+                emit('phaseChange',{'textElementId':"phaseText",'playerPhase':str(player2[0])+"'s turn"},room=room)
                 
             if db[room]>24:
                 red=0
@@ -249,8 +258,10 @@ def putCard(i,j):
             phases[room]='select'
             if turns[room]=='green':
                 turns[room]='red'
+                emit('phaseChange',{'textElementId':"phaseText",'playerPhase':str(player1[0])+"'s turn"},room=room)
             else:
                 turns[room]='green'
+                emit('phaseChange',{'textElementId':"phaseText",'playerPhase':str(player2[0])+"'s turn"},room=room)
                 
             if db[room]>24:
                 red=0

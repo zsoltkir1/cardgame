@@ -20,7 +20,7 @@ class RegisterForm(Form):
 class LoginForm2(Form):
     email = StringField('E-mail', validators=[Required()])
     password = PasswordField('Password', validators=[Required()])
-    remember = BooleanField('Keep me logged in')
+    #remember = BooleanField('Keep me logged in')
     submit = SubmitField('Login')
     
 class IndexForm(Form): #ezen még elég sok változtatás lesz

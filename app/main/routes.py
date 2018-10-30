@@ -12,9 +12,9 @@ from flask_login import UserMixin, LoginManager, login_user, logout_user, curren
 def index():
     """Index page."""
     if current_user.is_authenticated:
-        return render_template('index2.html')
+        return render_template('index.html')
     else:
-        return render_template('index4.html')
+        return render_template('index.html')
 
 @main.route('/game', methods=['GET', 'POST'])
 def lobby():
@@ -90,11 +90,13 @@ def login():
                 if current_user.is_confirmed == "True":
                     return redirect('/game')
                 else:
-                    return render_template('notActivated.html')
-        return render_template('fail.html', form=form)
+                    return render_template('notActivated.html')       
+        flash("Wrong username or password!") 
+        return render_template('index.html', form=form)
     elif request.method == 'GET':
         if current_user.is_authenticated:
-            return render_template('loggedin.html')
+            flash("You are already logged in!") 
+            return render_template('index.html', form=form)
         else:
             form = LoginForm2()
             return render_template('login.html', form=form)

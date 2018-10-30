@@ -30,14 +30,14 @@ function tableCreate() {
                     for (var l = 0; l < 3; l++) {
                         if (k == 2 && l == 2) {
                             var intd = intr.insertCell();
-                            intd.appendChild(document.createTextNode('a'));
+                            intd.appendChild(document.createTextNode(' '));
                             //intd.style.border = '1px solid black';
                             intd.id = 'intd' + (i + 1) + (j + 1) + (k + 1) + (l + 1);
                             intd.className += 'classintd' + (k + 1) + (l + 1);
                             break;
                         } else {
                             var intd = intr.insertCell();
-                            intd.appendChild(document.createTextNode('a'));
+                            intd.appendChild(document.createTextNode(' '));
                             //intd.style.border = '1px solid black';
                             intd.id = 'intd' + (i + 1) + (j + 1) + (k + 1) + (l + 1);
                             intd.className += 'classintd' + (k + 1) + (l + 1);
@@ -72,14 +72,14 @@ function tableCreate() {
                     for (var l = 0; l < 3; l++) {
                         if (k == 2 && l == 2) {
                             var intd = intr.insertCell();
-                            intd.appendChild(document.createTextNode('a'));
+                            intd.appendChild(document.createTextNode(' '));
                             //intd.style.border = '1px solid black';
                             intd.id = 'intd' + (i + 1) + (j + 1) + (k + 1) + (l + 1);
                             intd.className += 'classintd' + (k + 1) + (l + 1);
                             break;
                         } else {
                             var intd = intr.insertCell();
-                            intd.appendChild(document.createTextNode('a'));
+                            intd.appendChild(document.createTextNode(' '));
                             //intd.style.border = '1px solid black';
                             intd.id = 'intd' + (i + 1) + (j + 1) + (k + 1) + (l + 1);
                             intd.className += 'classintd' + (k + 1) + (l + 1);
@@ -127,7 +127,7 @@ function tableCreateForAvailableCards() {
                     for (var l = 0; l < 3; l++) {
                         if (k == 2 && l == 2) {
                             var intd = intr.insertCell();
-                            intd.appendChild(document.createTextNode('a'));
+                            intd.appendChild(document.createTextNode(' '));
                             //intd.style.border = '1px solid black';
                             intd.id = 'intd' + (j + 1) +(k + 1)+ (l + 1);
                             intd.className += 'classintd' +(k + 1)+ (l + 1);
@@ -137,7 +137,7 @@ function tableCreateForAvailableCards() {
                             break;
                         } else {
                             var intd = intr.insertCell();
-                            intd.appendChild(document.createTextNode('a'));
+                            intd.appendChild(document.createTextNode(' '));
                             //intd.style.border = '1px solid black';
                             intd.id = 'intd' + (j + 1) +(k + 1)+ (l + 1);
                             intd.className += 'classintd' +(k + 1)+ (l + 1);
@@ -170,14 +170,14 @@ function tableCreateForAvailableCards() {
                     for (var l = 0; l < 3; l++) {
                         if (k == 2 && l == 2) {
                             var intd = intr.insertCell();
-                            intd.appendChild(document.createTextNode('a'));
+                            intd.appendChild(document.createTextNode(' '));
                             //intd.style.border = '1px solid black';
                             intd.id = 'intd' + (j + 1) +(k + 1)+ (l + 1);
                             intd.className += 'classintd' +(k + 1)+ (l + 1);
                             break;
                         } else {
                             var intd = intr.insertCell();
-                            intd.appendChild(document.createTextNode('a'));
+                            intd.appendChild(document.createTextNode(' '));
                             //intd.style.border = '1px solid black';
                             intd.id = 'intd' + (j + 1) +(k + 1)+ (l + 1);
                             intd.className += 'classintd' +(k + 1)+ (l + 1);
