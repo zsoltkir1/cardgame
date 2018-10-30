@@ -83,25 +83,79 @@
             <ul class="img-showcase clearfix">
                 <li>
                     <figure class="game-photo">
-                        <img src="static/img/1.jpg" alt="In Game I">
+                        <img id='myImg1' src="static/img/1.jpg" alt="In Game I">
                     </figure>
                 </li>
                 <li>
                     <figure class="game-photo">
-                        <img src="static/img/1.jpg" alt="In Game II">
+                        <img id='myImg2' src="static/img/1.jpg" alt="In Game II">
                     </figure>
                 </li>
                 <li>
                     <figure class="game-photo">
-                        <img src="static/img/1.jpg" alt="In Game III">
+                        <img id='myImg3' src="static/img/1.jpg" alt="In Game III">
                     </figure>
                 </li>
                 <li>
                     <figure class="game-photo">
-                        <img src="static/img/1.jpg" alt="Chat">
+                        <img id='myImg4' src="static/img/1.jpg" alt="Chat">
                     </figure>
                 </li>
             </ul>    
         </section>
+        <div id="myModal" class="modal">
+
+          <a href="http://192.168.125.231:5004">&times;</a>
+
+          <img class="modal-content" id="img01">
+
+          <div id="caption"></div>
+        </div>
     </body>
+    <script>
+
+            var modal = document.getElementById('myModal');
+
+            var img = document.getElementById('myImg1');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            
+            var img2 = document.getElementById('myImg2');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img2.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            
+            var img3 = document.getElementById('myImg3');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img3.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            
+            var img4 = document.getElementById('myImg4');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img4.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            var closeButton = document.getElementsByClassName('close');
+
+            closeButton.onclick = function() { 
+              modal.style.display = "none";
+            }
+        </script>
 </html>
