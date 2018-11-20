@@ -1,97 +1,154 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>zsoltkir1's CardGame</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-    box-sizing: border-box;
-}
 
-input[type=text], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="static/css/grid.css">
+        <link rel="stylesheet" type="text/css" href="static/css/ionicons.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        <title>Card Game</title>
+    <style>
+        #room {
+            width: 250px;
+        }
+        .form_style {
+            width: 250px;
+        }
+    </style>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <header class="header-bg">
+            <nav>
+                <div class="row">
+                    <ul class="main-nav">
+                        <li><a href="http://192.168.125.231:5004/game">Play Game</a></li>
+                        {% if current_user.is_authenticated %}<li><a href="http://192.168.125.231:5004/logout">Logout</a></li>{% else %}<li><a href="http://192.168.125.231:5004/login">Login</a></li>{% endif %}
+                        <li><a href="http://192.168.125.231:5004/register">Register</a></li>  
+                    </ul>
+                </div>
+            </nav>
+            <div class="form-padding-login">
+                <div class="row">
+                    <form method="post">
+                    {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                                <label for="room">{{ form.room.label }}</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <input type="text" id="room" name="room" placeholder="Room's name..">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                                <label>Deck</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <div class="form_style">
+                                    {{ form.owner }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                                <label>&nbsp;</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <div class="button-padding">
+                                    <input type="submit" value="Play">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+        <section class="section-img">
+            <ul class="img-showcase clearfix">
+                <li>
+                    <figure class="game-photo">
+                        <img id='myImg1' src="static/img/1.jpg" alt="In Game I">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="game-photo">
+                        <img id='myImg2' src="static/img/1.jpg" alt="In Game II">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="game-photo">
+                        <img id='myImg3' src="static/img/1.jpg" alt="In Game III">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="game-photo">
+                        <img id='myImg4' src="static/img/1.jpg" alt="Chat">
+                    </figure>
+                </li>
+            </ul>    
+        </section>
+        <div id="myModal" class="modal">
 
-label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-}
+          <span class="close" ></span>
+        <a href="#" class="btn btn-full" onclick="div_hide()">Close</a>
 
-input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
-}
+          <img class="modal-content" id="img01">
 
-input[type=submit]:hover {
-    background-color: #45a049;
-}
+          <div id="caption"></div>
+        </div>
+    </body>
+    <script>
+            function div_hide(){
+            document.getElementsByClassName('close').style.display = "none";
+            }
 
-.container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
+            var modal = document.getElementById('myModal');
 
-.col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-}
+            var img = document.getElementById('myImg1');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            
+            var img2 = document.getElementById('myImg2');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img2.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            
+            var img3 = document.getElementById('myImg3');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img3.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            
+            var img4 = document.getElementById('myImg4');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img4.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
 
-.col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
-        width: 100%;
-        margin-top: 0;
-    }
-}
-</style>
-</head>
-<body>
-<h1>Az oldal jelenleg karbantartás alatt van!</h1>
-<h1>Itt lesz majd a kártyajáték de még nincs kész</h1>
-
-<div class="container">
-  <form method="POST">
-  {{ form.hidden_tag() }}
-
-    <div class="row">
-      <div class="col-25">
-        <label for="room">{{ form.room.label }}</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="room" name="room" placeholder="Room's name..">
-      </div>
-    </div>
-    <div class="row">
-        <form>
-        {{ form.owner }}
-        <input type="submit" value="Belépek">
-        </form>
-  </form>
-</div>
-
-</body>
+        </script>
 </html>
